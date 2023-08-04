@@ -59,11 +59,11 @@ function fnSqlAdminUserUpdate($userNo, $name, $id, $password, $authority)
 //
 function fnSqlAdminUserInsert($userNo, $name, $id, $password, $authority)
 {
-    $pass = addslashes(hash('adler32', $password));
+
     $sql = "INSERT INTO TBLUSER(";
     $sql .= "USERNO,NAME,ID,PASSWORD,AUTHORITY,INSDT,UPDT,DEL";
     $sql .= ")VALUES(";
-    $sql .= "'$userNo','$name','$id','$pass','$authority',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1)";
+    $sql .= "'$userNo','$name','$id','$password','$authority',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1)";
 
     return ($sql);
 }
@@ -88,11 +88,11 @@ function fnNextNo($t)
 {
     $conn = fnDbConnect();
 
-    $sql = "SELECT MAX(".$t."NO) FROM TBL".$t;
+    $sql = "SELECT MAX(" . $t . "NO) FROM TBL" . $t;
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);
     if ($row[0]) {
-        $max = $row[0];
+        $max = $row[0] + 1;
     } else {
         $max = 1;
     }
