@@ -15,31 +15,31 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
 	$sql .= " FROM TBLARTICLE";
 	$sql .= " WHERE DEL = $sDel";
 	if ($sArticle) {
-		$sql .= " OR ARTICLE LIKE '%$sArticle$%'";
+		$sql .= " AND ARTICLE LIKE '%$sArticle%'"; //''の中の変数のスペルが間違っているのと「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sRoom) {
-		$sql .= " OR ROOM LIKE '%$sRoom%'";
+		$sql .= " AND ROOM LIKE '%$sRoom%'"; //「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sKeyPlace) {
-		$sql .= " OR KEYPLACE LIKE '%$sKeyPlace%'";
+		$sql .= " AND KEYPLACE LIKE '%$sKeyPlace%'"; //「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sArticleNote) {
-		$sql .= " OR ARTICLENOTE LIKE '%$sArticleNote%'";
+		$sql .= " AND ARTICLENOTE LIKE '%$sArticleNote%'"; //「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sKeyBox) {
-		$sql .= " OR KEYBOX LIKE '%l$sKeyBox%'";
+		$sql .= " AND KEYBOX LIKE '%$sKeyBox%'"; //''の中の変数のスペルが間違っているのと「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sDrawing) {
-		$sql .= " OR DRAWING LIKE '%$sDrawing%'";
+		$sql .= " AND DRAWING LIKE '%$sDrawing%'"; //「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($sSellCharge) {
-		$sql .= " OR SELLCHARGE LIKE '%$sSellCharge%'";
+		$sql .= " AND SELLCHARGE LIKE '%$sSellCharge%'"; //「OR」でコーディングしたため検索機能が正常に動作しなかったので「AND」に修正
 	}
 	if ($orderBy) {
 		$sql .= " ORDER BY $orderBy $orderTo";
 	}
 	if ($flg) {
-		$sql .= " LIMIT " . (($sPage - 1) * PAGE_MAX) . ", " . PAGE_MAX;
+		$sql .= " LIMIT " . (($sPage - 1) * PAGE_MAX) . ", " . PAGE_MAX; //記号が間違っていて($sPage + 1)ページが200から表示されるようになっていたので修正
 	}
 
 	return ($sql);

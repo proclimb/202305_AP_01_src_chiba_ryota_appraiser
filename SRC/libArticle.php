@@ -58,19 +58,19 @@ function subArticle()
 				</tr>
 				<tr>
 					<th>物件名</th>
-					<td><input type="text" name="sArticle" value="<?php print $sRooms ?>" size="50" /></td>
+					<td><input type="text" name="sArticle" value="<?php print $sArticle ?>" size="50" /></td> <!--valueの変数$sRoomが$sArticleでないと正常に検索できないため修正-->
 					<th>キーBox番号</th>
 					<td><input type="text" name="sKeyBox" value="<?php print $sKeyBox ?>" size="30" /></td>
 				</tr>
 				<tr>
 					<th>部屋番号</th>
-					<td><input type="text" name="sRoom" value="" size="30" /><?php print $sArticle ?></td>
+					<td><input type="text" name="sRoom" value="<?php print $sRoom ?>" size="30" /></td> <!--valueに変数が設定されたいなかったため修正-->
 					<th>3Dパース</th>
 					<td><input type="text" name="sDrawing" value="<?php print $sDrawing ?>" size="30" /></td>
 				</tr>
 				<tr>
 					<th>鍵場所</th>
-					<td><input type="text" name="sKeyPlace" value="<?php print $sKagPlace ?>" size="30" /></td>
+					<td><input type="text" name="sKeyPlace" value="<?php print $sKeyPlace ?>" size="30" /></td><!--valueに変数のスペルが間違いだったため修正-->
 					<th>営業担当者</th>
 					<td><input type="text" name="sSellCharge" value="<?php print $sSellCharge ?>" /></td>
 				</tr>
@@ -122,14 +122,14 @@ function subArticle()
 				$sellCharge  = $row["SELLCHARGE"];
 			?>
 				<tr>
-					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $rrticleNo ?>';form.submit();"><?php print $article ?></a></td>
-					<td class="list_td<?php print $i ?>"><?php print $room ?></td>
-					<td class="list_td<?php print $i ?>"><?php print $drawing ?></td>
+					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $rrticleNo ?>';form.submit();"><?php print $article ?></a></td> <!--変数のスペルが間違っていた(print $rrticleNo)ため物件更新に遷移せず物件登録に遷移していたため修正-->
+					<td class="list_td<?php print $i ?>"><?php print $room ?></td> <!--表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $keyPlace ?></td>
-					<td class="list_td<?php print $i ?>"><?php print $articleNote ?></td>
-					<td class="list_td<?php print $i ?>"><?php print $room ?></td>
-					<td class="list_td<?php print $i ?>"><?php print $sellCharge ?></td>
-					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='stock';form.sName.value='<?php print $article ?>';form.sRoom.value='<?php print $room ?>';form.submit();">表示</a></td>
+					<td class="list_td<?php print $i ?>"><?php print $articleNote ?></td> <!--表示順が間違っていたため修正-->
+					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='stock';form.sName.value='<?php print $article ?>';form.sRoom.value='<?php print $room ?>';form.submit();">表示</a></td> <!--リンク先の指定(value='stock';)が間違っているのと、表示順が間違っていたため修正-->
+					<td class="list_td<?php print $i ?>"><?php print $keyBox  ?></td> <!--表示順が間違っていたため修正-->
+					<td class="list_td<?php print $i ?>"><?php print $drawing ?></td> <!--表示順が間違っていたため修正-->
+					<td class="list_td<?php print $i ?>"><?php print $sellCharge ?></td> <!--表示順が間違っていたため修正-->
 				</tr>
 			<?php
 				$i = ($i + 1) % 3;
