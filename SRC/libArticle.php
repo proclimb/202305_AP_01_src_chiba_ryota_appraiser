@@ -126,7 +126,7 @@ function subArticle()
 					<td class="list_td<?php print $i ?>"><?php print $room ?></td> <!--表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $keyPlace ?></td>
 					<td class="list_td<?php print $i ?>"><?php print $articleNote ?></td> <!--表示順が間違っていたため修正-->
-					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='stock';form.sName.value='<?php print $article ?>';form.sRoom.value='<?php print $room ?>';form.submit();">表示</a></td> <!--リンク先の指定(value='stock';)が間違っているのと、表示順が間違っていたため修正-->
+					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='fManager';form.sName.value='<?php print $article ?>';form.sRoom.value='<?php print $room ?>';form.submit();">表示</a></td> <!--リンク先の指定(value='stock';)が間違っているのと、表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $keyBox  ?></td> <!--表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $drawing ?></td> <!--表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $sellCharge ?></td> <!--表示順が間違っていたため修正-->
