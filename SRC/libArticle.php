@@ -122,7 +122,7 @@ function subArticle()
 				$sellCharge  = $row["SELLCHARGE"];
 			?>
 				<tr>
-					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $rrticleNo ?>';form.submit();"><?php print $article ?></a></td> <!--変数のスペルが間違っていた(print $rrticleNo)ため物件更新に遷移せず物件登録に遷移していたため修正-->
+					<td class="list_td<?php print $i ?>"><a href="javascript:form.act.value='articleEdit';form.articleNo.value='<?php print $articleNo ?>';form.submit();"><?php print $article ?></a></td> <!--変数のスペルが間違っていた(print $rrticleNo)ため物件更新に遷移せず物件登録に遷移していたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $room ?></td> <!--表示順が間違っていたため修正-->
 					<td class="list_td<?php print $i ?>"><?php print $keyPlace ?></td>
 					<td class="list_td<?php print $i ?>"><?php print $articleNote ?></td> <!--表示順が間違っていたため修正-->
