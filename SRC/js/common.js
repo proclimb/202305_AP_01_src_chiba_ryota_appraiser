@@ -33,6 +33,7 @@ function isLength(length, msg, obj) {
 	rtn = false;
 	if (obj.value.length > length) {
 		alert(msg + "は" + length + "文字以内で入力して下さい");
+		rtn = true; //リターンの値が33行目で「rtn = false」で設定されていたため、別場所で使用しているif分が全てfalseにあるので修正
 	}
 	return rtn;
 }
