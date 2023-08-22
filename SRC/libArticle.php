@@ -188,7 +188,7 @@ function subArticleEdit()
 		$btnImage = 'btn_enter.png';
 	}
 
-	subMenu();
+	subMenu(); //subMenu2()という完成していないfunctionを使用していたため修正
 ?>
 	<script type="text/javascript" src="./js/article.js"></script>
 
@@ -307,7 +307,7 @@ function subArticleEditComplete()
 		$res = mysqli_query($conn, $sql);
 	} else {
 		// 新規登録
-		$sql = fnSqlArticleInsert(fnNextNo('ARTICLE'), $article, $room, $keyPlace, $address, $articleNote, $keyBox, $drawing, $sellCharge, $del);
+		$sql = fnSqlArticleInsert(fnNextNo('ARTICLE'),  $keyPlace, $article, $address,  $keyBox, $articleNote, $drawing, $sellCharge, $room, $del); //引数がずれていたためDBにずれて登録されていたので修正
 
 		$res = mysqli_query($conn, $sql);
 
