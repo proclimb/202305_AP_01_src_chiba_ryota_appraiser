@@ -24,7 +24,7 @@ function subArticle()
 	}
 
 	if (!$sPage) {
-		$sPage = 1;
+		$sPage = 1; //小文字のLになっていて、検索していない状態の新規登録後の遷移時に検索結果が大項目しか表示しない不具合があったため修正
 	}
 
 	if (!$orderBy) {
@@ -215,8 +215,8 @@ function subArticleEdit()
 				<th>除外</th>
 				<?php if ($articleNo) { ?>
 					<td>
-						<input type="radio" name="del" value="1" checked="checked" /> 非除外
-						<input type="radio" name="del" value="0" <?php if ($del == '0') print ' checked="checked"' ?> /> 除外
+						<input type="radio" name="del" value="1" checked="checked" /> 非除外 <!--チェックボックスで表示されているため修正-->
+						<input type="radio" name="del" value="0" <?php if ($del == '0') print ' checked="checked"' ?> /> 除外 <!--チェックボックスで表示されているため修正-->
 					</td>
 				<?php } else { ?>
 					<td>
@@ -261,7 +261,9 @@ function subArticleEdit()
 
 		<a href="javascript:fnArticleEditCheck();"><img src="./images/<?php print $btnImage ?>" /></a>　
 		<a href="javascript:form.act.value='articleSearch';form.submit();"><img src="./images/btn_return.png" /></a> <!--value='fManager'とコーディングしてありﾌｧｲﾙﾏﾈｰｼﾞｬｰ画面に遷移していたので修正-->
-		&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a>
+		<?php if ($articleNo) { ?> <!--新規登録時に削除ボタンが表示されていたので修正-->
+			&nbsp;&nbsp;<a href="javascript:fnArticleDeleteCheck(<?php print $articleNo ?>);"><img src="./images/btn_del.png" /></a>
+		<?php }; ?>
 	</form>
 <?php
 }
