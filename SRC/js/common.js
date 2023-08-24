@@ -7,6 +7,7 @@
 function fnYMDCheck(msg, obj) {
 	// 未入力時はチェックしない
 	oYMD = obj.value;
+	if (!oYMD) { return true; } //必須項目ではないため入力データがない時はreturnの値をtrue(プログラム上function呼び出しに「！」を付けているため)にして返す必要があるため修正
 
 	var tmp = oYMD.split('/');
 	var ymd = new Date(tmp[0], parseInt(tmp[1], 10) - 1, parseInt(tmp[2], 10));
@@ -33,7 +34,7 @@ function isLength(length, msg, obj) {
 	rtn = false;
 	if (obj.value.length > length) {
 		alert(msg + "は" + length + "文字以内で入力して下さい");
-		rtn = true; //リターンの値が33行目で「rtn = false」で設定されていたため、別場所で使用しているif分が全てfalseにあるので修正
+		rtn = true; //リターンの値が「rtn = false」で設定されていたため、別場所で使用しているif分が全てfalseになるので修正
 	}
 	return rtn;
 }
@@ -50,7 +51,7 @@ function isLength(length, msg, obj) {
  */
 function isNumericLength(length, msg, obj) {
 	rtn = false;
-	if (obj.value.length > 9 || obj.value.match(/[^0-8]+/)) {
+	if (obj.value.length > 9 || obj.value.match(/[^0-9]+/)) { //数字の9が登録できなくなっていたため修正
 		alert(msg + "は" + length + "桁以内の半角数字で入力してください");
 		rtn = true;
 	}
