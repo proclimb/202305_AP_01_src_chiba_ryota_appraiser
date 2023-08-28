@@ -4,21 +4,21 @@
 function fnGuideEditCheck() {
 
 	var cnt = document.form.cnt.value;
-	for (i = 1; i < cnt; i++) {
+	for (i = 0; i < cnt; i++) {//必須項目のチェックをしなくなるコードだったため修正
 
 		var msg = "";
 		if (cnt > 1) { msg = (i + 1) + "件目の"; }
-		tmp = getEditObject(i, "guideStart");
+		tmp = getEditObject(i, "guideStartDT");//スペルミスによりポップアップが表示されなくなっていたため修正
 		if (tmp.value == '') { alert(msg + "案内日(開始日付)を入力してください"); return; }
 		if (!fnYMDCheck(msg + "開始日付には正しい日付", tmp)) { return; }
 		if (!fnYMDCheck(msg + "開始日付には正しい日付", getEditObject(i, "guideStartDT"))) { return; }
 		if (!fnYMDCheck(msg + "終了日付には正しい日付", getEditObject(i, "guideEndDT"))) { return; }
-		if (isLength(100, msg + "担当", getEditObject(i, "charge"))) { return; }
-		if (isLength(100, msg + "営業店", getEditObject(i, "name"))) { return; }
-		if (isLength(100, msg + "業者名", getEditObject(i, "branch"))) { return; }
+		if (isLength(100, msg + "業者名", getEditObject(i, "name"))) { return; }//営業店のエラー表示になっていたため修正
+		if (isLength(100, msg + "営業店", getEditObject(i, "branch"))) { return; }//業者名のエラー表示になっていたため修正
 		if (isLength(100, msg + "TEL", getEditObject(i, "tel"))) { return; }
 		if (isLength(100, msg + "FAX", getEditObject(i, "fax"))) { return; }
-		if (isLength(10, msg + "結果", getEditObject(i, "result"))) { return; }
+		if (isLength(100, msg + "担当", getEditObject(i, "charge"))) { return; }//画面表示とエラーがでる順番がずれていたため修正※不具合ではないためテスト仕様書には記載しない
+		if (isLength(1000, msg + "結果", getEditObject(i, "result"))) { return; }//10文字までしか登録できないようになっていたので修正
 		if (!fnYMDCheck(msg + "受付日には正しい日付", getEditObject(i, "acceptDT"))) { return; }
 		if (isLength(100, msg + "受付", getEditObject(i, "accept"))) { return; }
 	}
