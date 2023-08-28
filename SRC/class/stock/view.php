@@ -293,7 +293,7 @@ function subStockEditView($param)
 					<?php
 					for ($i = 0; $i < 4; $i++) {
 					?>
-						<input type="radio" name="distance" value="<?php print $i; ?>" <?php if ($param["distance"] == $i) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正-->
+						<input type="radio" name="distance" value="<?php print $i; ?>" <?php if ($param["distance"] == $i) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正、★★★value="print $i+1;"も修正したので登録や更新に影響しないか注意★★★-->
 					<?php
 					}
 					?>
@@ -334,7 +334,7 @@ function subStockEditView($param)
 					for ($i = 0; $i < 6; $i++) {
 					?>
 						<br />
-						<input type="radio" name="how" value="<?php print $i + 1; ?>" <?php if ($param["how"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?>
+						<input type="radio" name="how" value="<?php print $i; ?>" <?php if ($param["how"] == $i) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正-->
 					<?php
 					}
 					?>
