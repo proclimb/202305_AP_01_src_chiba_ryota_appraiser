@@ -216,7 +216,7 @@ function subStockEditView($param)
 
 	<h1>仕入<?php print $param["purpose"] ?></h1>
 
-	<form name="form" id="form" action="index.php" method="get">
+	<form name="form" id="form" action="index.php" method="post"><!--備考の1000文字を登録しようとするとURLが長すぎてエラーになるし、安全性に欠けているので修正-->
 		<input type="hidden" name="act" />
 		<input type="hidden" name="sDel" value="<?php print $param["sDel"] ?>" />
 		<input type="hidden" name="sInsDTFrom" value="<?php print $param["sInsDTFrom"] ?>" />
