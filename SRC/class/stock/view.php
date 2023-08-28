@@ -243,8 +243,12 @@ function subStockEditView($param)
 		<table border="0" cellpadding="5" cellspacing="1">
 			<tr>
 				<th>除外</th>
-				<td><input type="radio" name="del" value="1" /> 非除外
-					<input type="radio" name="del" value="0" /> 除外
+				<td><input type="radio" name="del" value="1" <?php if ($param['del'] == 1 || $param['del'] == null) { //ラジオボタンが未選択状態で表示されていたため修正
+																	echo "checked";
+																} ?> /> 非除外
+					<input type="radio" name="del" value="0" <?php if ($param['del'] === "0") { //除外のデータを更新する時に未選択になるため修正
+																	echo "checked";
+																} ?> /> 除外
 				</td>
 			</tr>
 			<tr>
