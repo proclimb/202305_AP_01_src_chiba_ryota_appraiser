@@ -66,7 +66,7 @@ function fnGuideMove(muki, articleNo) {
 		// 名称の取得
 		var articleName = $(obj.children()[0]).html();//クロスサイトスクリプティングに関するワードがあるときに画面表示に不具合が発生するため修正
 		var articleRoom = $(obj.children()[1]).html();//
-		var articleKey = $(obj.children()[2]).text();
+		var articleKey = $(obj.children()[2]).html();//鍵場所の項目がリンクで表示せず文字のみの表示だったため修正
 
 		// 登録リストに保存(右側に移動)
 		tags = "<tr id=\"r" + articleNo + "\">";
