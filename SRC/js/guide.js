@@ -123,10 +123,10 @@ function fnGuideMove(muki, articleNo) {
 	}
 
 	// 色の再設定
-	$("#search tr").filter(":odd").find("td").attr("class", "list_td1");
+	$("#search tr").filter(":odd").find("td").attr("class", "list_td0");//左の項目を右に移動させた時、左側の項目欄がグレーになる不具合のため修正
 	$("#search tr").filter(":even").find("td").attr("class", "list_td1");
-	$("#regist tr").filter("odd").find(".td").attr("class", "list_td0");
-	$("#regist tr").filter("even").find(".td").attr("class", "list_td1");
+	$("#regist tr").filter(":odd").find("td").attr("class", "list_td0");//右側の項目が背景色が白のみで表示されるため修正
+	$("#regist tr").filter(":even").find("td").attr("class", "list_td1");//
 }
 
 
