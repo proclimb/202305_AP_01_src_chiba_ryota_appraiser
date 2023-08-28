@@ -102,11 +102,11 @@ function fnGuideMove(muki, articleNo) {
 		tags = "<tr id=\"s" + articleNo + "\">";
 
 		// 物件名の作成
-		tags += "<th>" + $(obj.children()[1]).html() + "</th>";//クロスサイトスクリプティングに関するワードがあるときに画面表示に不具合が発生するため修正
+		tags += "<td>" + $(obj.children()[1]).html() + "</td>";//1.クロスサイトスクリプティングに関するワードがあるときに画面表示に不具合が発生するため修正　2.文字が中央揃えの太文字になるため修正
 
 		// 部屋番号の作成
 		tags += "<td>" + $(obj.children()[2]).html() + "</td>";//クロスサイトスクリプティングに関するワードがあるときに画面表示に不具合が発生するため修正
-		tags += "<td>" + $(obj.children()[2]).html() + "</td>";
+		//部屋番号の項目が2つ表示されるため削除
 
 		// 鍵情報の作成
 		tags += "<td>" + $(obj.children()[3]).html() + "</td>";
