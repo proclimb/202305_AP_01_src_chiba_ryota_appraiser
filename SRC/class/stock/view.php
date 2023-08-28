@@ -60,7 +60,7 @@ function subStockView($param)
 					<th>ランク</th>
 					<td>
 						<?php
-						for ($i = 0; $i < 27; $i++) {
+						for ($i = 0; $i < 5; $i++) { //アルファベットの5番目までを表示させるよう修正
 						?>
 							<input type="checkbox" name="sRank[]" value="<?php print $i + 1; ?>" <?php for ($j = 0; $j < 5; $j++) {
 																										if ($param["sRank"][$j] == $i + 1) print ' checked="checked"';
