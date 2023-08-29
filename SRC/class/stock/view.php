@@ -110,7 +110,7 @@ function subStockView($param)
 			</table>
 		</div>
 
-		<input type="image" src="./images/btn_search.png" onclick="form.act.value='stockEditComplete';form.submit();" />
+		<input type="image" src="./images/btn_search.png" onclick="form.act.value='stockSearch';form.submit();" /><!--検索ボタンをクリックするとDBにnullのデータが登録され遷移するので修正-->
 
 		<hr />
 
@@ -154,14 +154,14 @@ function subStockView($param)
 				while ($row = mysqli_fetch_array($res)) {
 					$stockNo     = htmlspecialchars($row[0]); //$row[]が0から始まっていなかったので表示がずれて表示されていたので修正
 					$charge      = htmlspecialchars($row[1]); //
-					$rank        = fnRankName(htmlspecialchars($row[2])); //登録してある値から-1されていて登録した項目が表示されていなかったので修正
+					$rank        = fnRankName(htmlspecialchars($row[2] - 1)); //項目を+1で登録しているので修正
 					$insDT       = htmlspecialchars($row[3]); //
 					$article     = htmlspecialchars($row[4]); //
 					$articleFuri = htmlspecialchars($row[5]); //
 					$room        = htmlspecialchars($row[6]); //
 					$area        = htmlspecialchars($row[7]); //
 					$station     = htmlspecialchars($row[8]); //
-					$distance    = fnRankName(htmlspecialchars($row[9])); //登録してある値から-1されていて登録した項目が表示されていなかったので修正
+					$distance    = fnRankName(htmlspecialchars($row[9] - 1)); //項目を+1で登録しているので修正
 					$agent       = htmlspecialchars($row[10]); //
 					$store       = htmlspecialchars($row[11]); //
 					$cover       = htmlspecialchars($row[12]); //
@@ -259,9 +259,16 @@ function subStockEditView($param)
 				<th>ランク</th>
 				<td>
 					<?php
+					if (!$param["stockNo"]) { //初期表示でチェックが入らず、更新画面を表示した時に登録したラジオボタンの項目がずれて表示されていたので修正
+						$param["rank"] = 1;
+					}
 					for ($i = 0; $i < 5; $i++) {
+						$check = '';
+						if (($param["rank"] - 1) == $i) {
+							$check = 'checked = "checked"';
+						}
 					?>
-						<input type="radio" name="rank" value="<?php print $i; ?>" <?php if ($param["rank"] == $i) print ' checked="checked"'; ?> /> <?php print fnRankName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正-->
+						<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnRankName($i); ?>
 					<?php
 					}
 					?>
@@ -291,9 +298,16 @@ function subStockEditView($param)
 				<th>距離</th>
 				<td>
 					<?php
+					if (!$param["stockNo"]) { //初期表示でチェックが入らず、更新画面を表示した時に登録したラジオボタンの項目がずれて表示されていたので修正
+						$param["distance"] = 1;
+					}
 					for ($i = 0; $i < 4; $i++) {
+						$check = '';
+						if (($param["distance"] - 1) == $i) {
+							$check = 'checked = "checked"';
+						}
 					?>
-						<input type="radio" name="distance" value="<?php print $i; ?>" <?php if ($param["distance"] == $i) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正、★★★value="print $i+1;"も修正したので登録や更新に影響しないか注意★★★-->
+						<input type="radio" name="distance" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnDistanceName($i); ?>
 					<?php
 					}
 					?>
@@ -331,10 +345,17 @@ function subStockEditView($param)
 				<th>仕入経緯</th>
 				<td>
 					<?php
+					if (!$param["stockNo"]) { //初期表示でチェックが入らず、更新画面を表示した時に登録したラジオボタンの項目がずれて表示されていたので修正
+						$param["how"] = 1;
+					}
 					for ($i = 0; $i < 6; $i++) {
+						$check = '';
+						if (($param["how"] - 1) == $i) {
+							$check = 'checked = "checked"';
+						}
 					?>
 						<br />
-						<input type="radio" name="how" value="<?php print $i; ?>" <?php if ($param["how"] == $i) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?><!--「$i=選択された数字」で表示させているため未選択時は0のAを表示させるよう修正-->
+						<input type="radio" name="how" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnHowName($i); ?>
 					<?php
 					}
 					?>
