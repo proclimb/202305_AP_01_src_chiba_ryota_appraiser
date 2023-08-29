@@ -119,7 +119,7 @@ function subStockView($param)
 			return;
 		}
 
-		$sql = fnSqlStockList(1, $param);
+		$sql = fnSqlStockList(0, $param); //ページカウントをしない状態だったのでページ表示がうまくいかなかったため修正
 		$res = mysqli_query($param["conn"], $sql);
 		$row = mysqli_fetch_array($res);
 
