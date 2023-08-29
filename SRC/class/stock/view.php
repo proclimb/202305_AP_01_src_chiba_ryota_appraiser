@@ -344,7 +344,7 @@ function subStockEditView($param)
 		</table>
 
 		<a href="javascript:fnStockEditCheck();"><img src="./images/<?php print $param["btnImage"] ?>" /></a>　
-		<a href="javascript:form.act.value='stockEditComplete';form.submit();"><img src="./images/btn_return.png" /></a>
+		<a href="javascript:form.act.value='stockSearch';form.submit();"><img src="./images/btn_return.png" /></a><!--戻るボタンのvalueが登録用の値だったため修正-->
 		<?php
 		if ($param["stockNo"]) {
 		?>
