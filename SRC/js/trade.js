@@ -73,7 +73,7 @@ function fnTradeEditCheck() {
 	}
 
 	if (confirm('この内容で登録します。よろしいですか？')) {
-		form.act.value = 'tradeEditCompleta';
+		form.act.value = 'tradeEditComplete';//スペルミスにより登録処理を行えずページ遷移もできなかったため修正
 		form.submit();
 	}
 }
