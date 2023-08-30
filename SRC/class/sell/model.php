@@ -111,6 +111,7 @@ function fnSqlSellUpdate($param)
     $sql .= ",PRICE = '" . $param["price"] . "'";
     $sql .= ",NOTE = '" . $param["note"] . "'";
     $sql .= ",UPDT = CURRENT_TIMESTAMP";
+    $sql .= " WHERE SELLNO = " . $param["sellNo"]; //SELLNOの指定をしていないコーディングだったためテーブル内にある全件を更新していたため修正
 
     return $sql;
 }
