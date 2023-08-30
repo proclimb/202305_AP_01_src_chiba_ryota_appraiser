@@ -121,12 +121,12 @@ function fnSqlSellUpdate($param)
 function fnSqlSellInsert($param)
 {
     $sql = "INSERT INTO TBLSELL(";
-    $sql .= "SELLNO,SEARCHDT,ARTICLE,ADDRESS,STATION,FOOT,YEARS,FLOOR,AREA,SELLER,PRICE,NOTE,INSDT,UPDT";
+    $sql .= "SELLNO,SEARCHDT,ARTICLE,ADDRESS,STATION,FOOT,YEARS,FLOOR,AREA,SELLER,PRICE,NOTE,INSDT,UPDT,DEL"; //非除外、除外、削除に関係するカラム名DELを登録するための値が存在せず登録されないようになっていたため修正
     $sql .= ")VALUES(";
     $sql .= "'" . $param["sellNo"] . "','" . $param["searchDT"] . "','" . $param["article"] . "','" . $param["address"] . "',"
         . "'" . $param["station"] . "','" . $param["foot"] . "','" . $param["years"] . "','" . $param["floor"] . "',"
         . "'" . $param["area"] . "','" . $param["seller"] . "','" . $param["price"] . "','" . $param["note"] . "',"
-        . "CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
+        . "CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1)"; //上部でカラム名DELを追加したので、新規登録時は1で登録されるよう修正
 
     return $sql;
 }
