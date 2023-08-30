@@ -11,12 +11,12 @@ function subSell()
         $param["sDel"] = 1;
     }
 
-    if (! $param["sPage"]) {
+    if (!$param["sPage"]) {
         $param["sPage"] = 1;
     }
 
-    if (! $param["orderBy"]) {
-        $param["orderBy"] = 'SEARCHDT';
+    if (!$param["orderBy"]) {
+        $param["orderBy"] = 'SELLNO'; //値の設定が日付の値を初期表示の段階で送っていたためソートボダンの降順が選択される現象が起きていたので修正
         $param["orderTo"] = 'desc';
     }
 
