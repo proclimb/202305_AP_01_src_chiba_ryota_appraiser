@@ -3,7 +3,7 @@
 //
 function fnTradeEditCheck() {
 	tmp = form.name.value;
-	if (tmp.length < 0) {
+	if (tmp.length == 0) {//0より小さい時ではなく0やnullの時エラーを出さないといけないので修正
 		alert('業者名を入力してください');
 		return;
 	}
@@ -12,7 +12,7 @@ function fnTradeEditCheck() {
 		return;
 	}
 
-	tmp = form.nameYomi.value;
+	tmp = form.nameFuri.value;//スペルミスによりエラーチェックが行われなかったため検索が機能していなかったので修正
 	if (tmp.length > 100) {
 		alert('業者名（よみ）は100文字以内で入力してください');
 		return;
@@ -37,7 +37,7 @@ function fnTradeEditCheck() {
 	}
 
 	tmp = form.prefecture.value;
-	if (tmp.length >= 10) {
+	if (tmp.length > 10) {//>=10とコーディングされていて10桁がtrueになってエラーを表示していたので11桁からエラー表示するよう修正
 		alert('住所（都道府県）は10文字以内で入力してください');
 		return;
 	}
