@@ -83,6 +83,7 @@ function fnTradeEditCheck() {
 function fnTradeDeleteCheck(no) {
 	if (confirm('削除します。よろしいですか？')) {
 		form.tradeNo.value = no;
+		form.act.value = 'tradeDelete';//削除するために飛ばす値が設定されていなかったので削除もせず初期ページに遷移させていたため修正
 		form.submit();
 	}
 }
