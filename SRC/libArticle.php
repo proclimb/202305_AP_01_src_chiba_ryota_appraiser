@@ -278,30 +278,30 @@ function subArticleEditComplete()
 {
 	$conn = fnDbConnect();
 
-	$sDel         = $_REQUEST['sDel'];
-	$sArticle     = $_REQUEST['sArticle'];
-	$sRoom        = $_REQUEST['sRoom'];
-	$sKeyPlace    = $_REQUEST['sKeyPlace'];
-	$sArticleNote = $_REQUEST['sArticleNote'];
-	$sKeyBox      = $_REQUEST['sKeyBox'];
-	$sDueDTFrom   = $_REQUEST['sDueDTFrom'];
-	$sDueDTTo     = $_REQUEST['sDueDTTo'];
-	$sSellCharge  = $_REQUEST['sSellCharge'];
+	$sDel         = htmlspecialchars($_REQUEST['sDel']);
+	$sArticle     = htmlspecialchars($_REQUEST['sArticle']);
+	$sRoom        = htmlspecialchars($_REQUEST['sRoom']);
+	$sKeyPlace    = htmlspecialchars($_REQUEST['sKeyPlace']);
+	$sArticleNote = htmlspecialchars($_REQUEST['sArticleNote']);
+	$sKeyBox      = htmlspecialchars($_REQUEST['sKeyBox']);
+	$sDueDTFrom   = htmlspecialchars($_REQUEST['sDueDTFrom']);
+	$sDueDTTo     = htmlspecialchars($_REQUEST['sDueDTTo']);
+	$sSellCharge  = htmlspecialchars($_REQUEST['sSellCharge']);
 
 	$orderBy = $_REQUEST['orderBy'];
 	$orderTo = $_REQUEST['orderTo'];
 	$sPage   = $_REQUEST['sPage'];
 
-	$articleNo   = $_REQUEST['articleNo'];
-	$article     = $_REQUEST['article'];
-	$room        = $_REQUEST['room'];
-	$keyPlace    = $_REQUEST['keyPlace'];
-	$address     = $_REQUEST['address'];
-	$articleNote = $_REQUEST['articleNote'];
-	$keyBox      = $_REQUEST['keyBox'];
-	$drawing     = $_REQUEST['drawing'];
-	$sellCharge  = $_REQUEST['sellCharge'];
-	$del         = $_REQUEST['del'];
+	$articleNo   = htmlspecialchars($_REQUEST['articleNo']);
+	$article     = htmlspecialchars($_REQUEST['article']);
+	$room        = htmlspecialchars($_REQUEST['room']);
+	$keyPlace    = htmlspecialchars($_REQUEST['keyPlace']);
+	$address     = htmlspecialchars($_REQUEST['address']);
+	$articleNote = htmlspecialchars($_REQUEST['articleNote']);
+	$keyBox      = htmlspecialchars($_REQUEST['keyBox']);
+	$drawing     = htmlspecialchars($_REQUEST['drawing']);
+	$sellCharge  = htmlspecialchars($_REQUEST['sellCharge']);
+	$del         = htmlspecialchars($_REQUEST['del']);
 
 	if ($articleNo) {
 		// 編集
@@ -313,8 +313,8 @@ function subArticleEditComplete()
 
 		$res = mysqli_query($conn, $sql);
 
-		/* $sql = fnSqlFManagerInsert(fnNextNo('FM'),$article,$room,$articleNote,$del);
-		   $res = mysqli_query($conn,$sql); */
+		$sql = fnSqlFManagerInsert(fnNextNo('FM'), $article, $room, $articleNote, $del); //コメントアウトされていて物件管理の新規登録時にファイルマネージャーにデータを登録されなかったので修正
+		$res = mysqli_query($conn, $sql);
 	}
 
 	$_REQUEST['act'] = 'articleSearch';
